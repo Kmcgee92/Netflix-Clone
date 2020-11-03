@@ -5,14 +5,20 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 
 
 from server.models import db, User
-from server.api.user_routes import user_routes
+from server.api import user
 
 from server.config import Config
 
 app = Flask(__name__)
 
 app.config.from_object(Config)
-app.register_blueprint(user_routes, url_prefix='/api/users')
+
+# setup jwt config
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+app.config['JWT_COOKIE_CSRF_PROTECT'] = False
+
+
+app.register_blueprint(user, url_prefix='/api/users')
 db.init_app(app)
 
 ## Application Security

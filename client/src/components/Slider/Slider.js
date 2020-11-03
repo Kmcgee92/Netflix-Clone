@@ -1,27 +1,14 @@
 import React, { useState } from "react";
+
+// styles
 import "../../scss/slider.scss";
+
+// mui
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const Slider = () => {
   const array = [
-    <div className="imgParent">
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-    </div>,
     <div className="imgParent">
       <img
         className="imgChild"
@@ -105,10 +92,10 @@ const Slider = () => {
         </div>
       ))}
       <button id="goLeft" onClick={goLeft}>
-        left
+        <ArrowBackIosIcon  />
       </button>
       <button id="goRight" onClick={goRight}>
-        right
+        <ArrowForwardIosIcon  />
       </button>
     </div>
   );
