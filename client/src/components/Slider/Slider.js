@@ -2,7 +2,84 @@ import React, { useState } from "react";
 import "../../scss/slider.scss";
 
 const Slider = () => {
-  const array = [1, 2, 3, 4, 5];
+  const array = [
+    <div className="imgParent">
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+    </div>,
+    <div className="imgParent">
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+    </div>,
+    <div className="imgParent">
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+    </div>,
+    <div className="imgParent">
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+      />
+      <img
+        className="imgChild"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
+      />
+    </div>,
+  ];
   const [offset, setOffset] = useState(0);
 
   const goLeft = () => {

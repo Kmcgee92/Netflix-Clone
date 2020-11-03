@@ -7,13 +7,6 @@ function App() {
     <BrowserRouter>
       <Slider />
       <Slider />
-      <Slider />
-      <Slider />
-      <Slider />
-      <Slider />
-      <Slider />
-      <Slider />
-      <Slider />
     </BrowserRouter>
   );
 }
