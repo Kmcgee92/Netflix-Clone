@@ -25,19 +25,19 @@
 3.  Store a watchlist to be edited as needed.
 
 # APIs CRUD Operations
-- /api/~
-			user/login
-			user/logout
-			user/register
-			user/<id>/history
-			user/<id>/history/add/<info>
-			user/<id>/history/clear
-      user/<id>/watchlist
-			user/<id>/watchlist/add/<info>
-			user/<id>/watchlist/remove/<info>
-- /api/session/~
-      restore
-      remove
+### /api/~
+- user/login
+- user/logout
+- user/register
+- user/< id >/history
+- user/< id >/history/add/< info > 
+- user/< id >/history/clear
+- user/< id >/watchlist
+- user/< id >/watchlist/add/< info >
+- user/< id >/watchlist/remove/< info >
+### /api/session/~
+- restore
+- remove
 
 # Tools
 -   VS Code
