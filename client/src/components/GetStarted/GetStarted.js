@@ -9,8 +9,7 @@ const GetStarted = () => {
   const id = null;
   return (
     <div>
-      
-      {!id ? <ProfileSelector /> : <LandingPage />}
+      {id ? <ProfileSelector /> : <LandingPage />}
       <div></div>
     </div>
   );
