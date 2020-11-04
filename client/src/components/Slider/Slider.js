@@ -12,7 +12,7 @@ const Slider = () => {
     <div className="imgParent">
       <img
         className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
       />
       <img
         className="imgChild"
@@ -21,7 +21,7 @@ const Slider = () => {
 
       <img
         className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
       />
       <img
         className="imgChild"
@@ -31,7 +31,7 @@ const Slider = () => {
     <div className="imgParent">
       <img
         className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
       />
       <img
         className="imgChild"
@@ -40,7 +40,7 @@ const Slider = () => {
 
       <img
         className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
       />
       <img
         className="imgChild"
@@ -50,7 +50,7 @@ const Slider = () => {
     <div className="imgParent">
       <img
         className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
       />
       <img
         className="imgChild"
@@ -59,7 +59,7 @@ const Slider = () => {
 
       <img
         className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/profilePic.jpg"
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
       />
       <img
         className="imgChild"
