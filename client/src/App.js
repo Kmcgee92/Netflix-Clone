@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+// redux
+import {useSelector, useDispatch} from 'react-redux'
+import {generateSession} from './Redux/actions/authActions'
 
 //core components
 import GetStarted from './components/GetStarted/GetStarted'
 import Browse from './components/Browse/Browse'
+import Signin from "./components/Signin/Signin";
 
 
 function App() {
+  // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
+  // const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (!auth.login) {
+      dispatch(generateSession());
+    }
+  }, []);
+  // auth? loading?
+
+  // if (loading) return null;
   return (
     <BrowserRouter>
       <Switch>
@@ -17,11 +34,13 @@ function App() {
         <Route exact path="/browse">
           <Browse />
         </Route>
+
         <Route exact path="/login">
-          {/* login */}
+          <Signin />
         </Route>
+
         <Route exact path="/signup">
-          {/* signup and redirect to browse */}
+          {/* signup and redirect to getting started */}
         </Route>
       </Switch>
       {/* temp */}
