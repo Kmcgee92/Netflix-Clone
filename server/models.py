@@ -20,7 +20,9 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "pic": self.pic,
+            "hashed": self.hashed_password
         }
+
 
 # HISTORY AND TMDB_HISTORY
 

@@ -19,7 +19,7 @@ def index():
     return {"users": [user.to_dict() for user in response]}
 
 
-@user.route('/login')
+@user.route('/login', methods=["POST"])
 def login():
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -29,30 +29,37 @@ def login():
     if not password:
         errors["password"] = "no password provided."
     if len(errors) > 0:
-        print(errors)
-        return errors
+        # print(errors)
+        return jsonify({"error": errors})
 
-    response = User.query.filter_by(email=email)
-    hashed_password = [item.hashed_password for item in response]
+    try:
+        response = User.query.filter_by(email=email).first()
+        loggedInUser = response.to_dict()
+    except:
+        return jsonify({"error": "no one found with those credentials"})
+    # print("="*1000)
+    # print(loggedInUser)
 
-    if not len([details for details in response]):
-        return jsonify({'message': 'email is incorrect'})
+    if not loggedInUser:
+        return jsonify({'error': 'email is not valid'})
 
-    if check_password_hash(hashed_password[0], password):
+    if check_password_hash(loggedInUser['hashed'], password):
         # Create the tokens we will be sending back to the user
         access_token = create_access_token(identity=email)
         refresh_token = create_refresh_token(identity=email)
         # Set the JWT cookies in the response
         resp = jsonify(
             {'login': True,
-             "access_token": access_token,
-             "refresh_token": refresh_token}
+            "access_token": access_token,
+             "refresh_token": refresh_token,
+             **loggedInUser
+             }
         )
         set_access_cookies(resp, access_token)
         set_refresh_cookies(resp, refresh_token)
         return resp
 
-    return jsonify({"message": "password's dont match"})
+    return jsonify({"error": "password is incorrect"})
 
 
 @user.route('/signup', methods=["POST"])
@@ -87,14 +94,21 @@ def signup():
 
 
 @ user.route('/token/refresh', methods=['POST'])
-@ jwt_optional
+@jwt_optional
 def refresh():
-    email = get_jwt_identity()
-    if not email:
-        return {}, 400
+    try:
+        email = get_jwt_identity()
+    except:
+        return {}, 401
 
-    access_token = create_access_token(identity=email)
-    response = User.query.filter_by(email=email).first()
+    if not email:
+        return jsonify({"msg": "no current user"}), 202
+
+    try:
+        access_token = create_access_token(identity=email)
+        response = User.query.filter_by(email=email).first()
+    except:
+        return {}, 401
     # Set the JWT access cookie in the response
     currentUser = response.to_dict()
     resp = jsonify({'refresh': True, **currentUser})
@@ -103,6 +117,7 @@ def refresh():
 
 
 @user.route('/token/remove', methods=['POST'])
+@jwt_required
 def logout():
     resp = jsonify({'logout': True})
     unset_jwt_cookies(resp)
