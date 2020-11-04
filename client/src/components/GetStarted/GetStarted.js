@@ -9,10 +9,9 @@ const GetStarted = () => {
   const id = null;
   return (
     <div>
-      <NavLink to="/browse" style={{ color: "white", fontSize: "30px" }}>
-        Browse
-      </NavLink>
+      
       {!id ? <ProfileSelector /> : <LandingPage />}
+      <div></div>
     </div>
   );
 };

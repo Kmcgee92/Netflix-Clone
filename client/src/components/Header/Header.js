@@ -11,13 +11,13 @@ import { Redirect, useHistory, useLocation } from "react-router-dom";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 //styles
-import "../../scss/header.scss";
+import styles from "../../scss/header.module.scss";
 
 
 const Header = () => {
   return (
-    <div className="header__wrapper">
-      <div className="logo">NexFlix</div>
+    <div className={styles.header__wrapper}>
+      <div className={styles.logo}>NexFlix</div>
     </div>
   );
 };
