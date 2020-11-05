@@ -1,71 +1,20 @@
 import React, { useState } from "react";
 
 // styles
-import "../../scss/slider.scss";
+import styles from "../../scss/slider.module.scss";
 
 // mui
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
-const Slider = () => {
+
+const Slider = (props) => {
+  const {
+    title,
+  }= props;
+  
   const array = [
-    <div className="imgParent">
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-    </div>,
-    <div className="imgParent">
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-    </div>,
-    <div className="imgParent">
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/profilePic.jpg"
-      />
-      <img
-        className="imgChild"
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/chicago-fire.jpg"
-      />
-    </div>,
+    
   ];
   const [offset, setOffset] = useState(0);
 
@@ -81,23 +30,26 @@ const Slider = () => {
       : setOffset((x) => x - 100);
   };
   return (
-    <div className="slider">
+    <>
+    <h2 className={styles.title}>{title}</h2>
+    <div className={styles.container}>
       {array.map((el, i) => (
         <div
           key={i}
-          className="slide"
+          className={styles.poster}
           style={{ transform: `translate(${offset}%)` }}
         >
           {el}
         </div>
       ))}
-      <button id="goLeft" onClick={goLeft}>
+      <button id={styles.goLeft} onClick={goLeft}>
         <ArrowBackIosIcon  />
       </button>
-      <button id="goRight" onClick={goRight}>
+      <button id={styles.goRight} onClick={goRight}>
         <ArrowForwardIosIcon  />
       </button>
     </div>
+    </>
   );
 };
 

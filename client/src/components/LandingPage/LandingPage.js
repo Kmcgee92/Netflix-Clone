@@ -11,15 +11,20 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 const LandingPage = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const [email, setEmail] =useState("")
-  console.log(email)
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleDemo = () => {
     dispatch(login("testUser@test.io", "password"))
     history.push("/")
   }
   const letsGetStarted = () => {
-
+    if (!email) {
+      setError(true)
+    }
+    if (email) {
+      history.push("/signup", { email });
+    }
   }
 
   return (
@@ -29,7 +34,7 @@ const LandingPage = () => {
         <div className={styles.banner}>
           <div className={styles.header}>
             <div className={styles.logo}>Nexflix</div>
-            <button onClick={()=> history.push('/login')}>Sign In</button>
+            <button onClick={() => history.push("/login")}>Sign In</button>
           </div>
           <div className={styles.container}>
             <h1>Unlimited movies, TV shows, and more.</h1>
@@ -38,17 +43,19 @@ const LandingPage = () => {
               Ready to watch? Enter your email to create or restart your
               membership.
             </h4>
+              {error ?<span className={styles.error}>Please provide an email.</span> : null}
             <div>
-              <input onChange={e=>setEmail(e.target.value) }placeholder="Email address" />
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email address"
+              />
               <button onClick={letsGetStarted}>
                 get started
                 <ArrowForwardIosIcon />
               </button>
             </div>
             <span>
-              <button onClick={handleDemo}>
-                Try My Demo
-              </button>
+              <button onClick={handleDemo}>Try My Demo</button>
             </span>
           </div>
         </div>

@@ -75,18 +75,17 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
-export const signup = (username, email, password) => async (dispatch) => {
-  const csrfToken = Cookies.get("XSRF-TOKEN");
-  const response = await fetch("/api/users", {
-    method: "post",
+export const signup = (name, email, password) => async (dispatch) => {
+  const response = await fetch("/api/users/signup", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // "XSRF-TOKEN": csrfToken
     },
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({ name, email, password }),
   });
   if (response.ok) {
-    const { user } = await response.json();
+    const user = await response.json();
+    console.log(user);
     dispatch(createUser(user));
   }
 };

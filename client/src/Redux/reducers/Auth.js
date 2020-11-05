@@ -5,6 +5,7 @@ export const auth = (state = {}, action) => {
     case SET_USER:
       return action.user;
     case CREATE_USER:
+      console.log("whats happening");
       return action.user;
     case REMOVE_USER:
       return {};

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 // redux
-import {useSelector, useDispatch} from 'react-redux'
-import {generateSession} from './Redux/actions/authActions'
+import { useSelector, useDispatch } from "react-redux";
+import { generateSession } from "./Redux/actions/authActions";
 
 //core components
-import GetStarted from './components/GetStarted/GetStarted'
-import Browse from './components/Browse/Browse'
+import GetStarted from "./components/GetStarted/GetStarted";
+import Browse from "./components/Browse/Browse";
 import Signin from "./components/Signin/Signin";
+import Signup from "./components/Signup/Signup";
+import NotFound from "./components/NotFound/NotFound";
 
 
 function App() {
@@ -40,7 +42,11 @@ function App() {
         </Route>
 
         <Route exact path="/signup">
-          {/* signup and redirect to getting started */}
+          <Signup />
+        </Route>
+
+        <Route component={NotFound}>
+          <NotFound />
         </Route>
       </Switch>
       {/* temp */}

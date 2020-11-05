@@ -86,6 +86,12 @@
         letter-spacing: 1px;
         padding: 20px 0 20px 0;
       }
+      .error {
+        color: orange;
+        font-size: 20px;
+        letter-spacing: 1px;
+        transition: ease-in-out 1s;
+      }
       div {
         width: 100%;
         display: flex;

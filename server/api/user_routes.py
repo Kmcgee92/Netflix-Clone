@@ -51,9 +51,9 @@ def login():
         resp = jsonify(
             {'login': True,
             "access_token": access_token,
-             "refresh_token": refresh_token,
+            "refresh_token": refresh_token,
              **loggedInUser
-             }
+            }
         )
         set_access_cookies(resp, access_token)
         set_refresh_cookies(resp, refresh_token)
@@ -88,7 +88,21 @@ def signup():
     )
     db.session.add(new_user)
     db.session.commit()
-    return jsonify({"msg": "account successfully created!"})
+
+    # Create the tokens we will be sending back to the user
+    access_token = create_access_token(identity=email)
+    refresh_token = create_refresh_token(identity=email)
+    new_user = new_user.to_dict()
+    # Set the JWT cookies in the response
+    resp = jsonify(
+        {'login': True,
+         "access_token": access_token,
+         "refresh_token": refresh_token,
+         **new_user
+         })
+    set_access_cookies(resp, access_token)
+    set_refresh_cookies(resp, refresh_token)
+    return resp, 200
 
 # persistant sessions
 
