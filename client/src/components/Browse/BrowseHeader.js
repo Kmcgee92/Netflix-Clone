@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
@@ -8,11 +9,19 @@ import { logout } from "../../Redux/actions/authActions";
 //styles
 import styles from "../../scss/browseHeader.module.scss";
 
+//mui
+import NotificationsOffIcon from "@material-ui/icons/NotificationsOff";
+import SearchIcon from "@material-ui/icons/Search";
+
+// nodejs library that concatenates classes
+import classNames from "classnames";
+
 const Header = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const reduxState = useSelector((state) => state);
   const [profile, setProfile] = useState(false);
+  const [blackHeader, setBlackHeader] = useState(false);
 
   useEffect(() => {
     if (reduxState.profiles.length > 0) {
@@ -31,17 +40,49 @@ const Header = () => {
   const defaultProfile =
     "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile0.png";
 
+
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      if (window.scrollY > 100) {
+        setBlackHeader(true);
+      } else {
+        setBlackHeader(false);
+      }
+      return () => {
+        window.removeEventListener("scroll");
+      };
+    });
+  }, []);
+
+      const scrollEffect = classNames({
+        [styles.headerBlack]: blackHeader,
+        [styles.noHeaderBlack]: !blackHeader,
+      });
   return (
     <>
       <div className={styles.headerShadow} />
-      <header>
+      <header className={scrollEffect}>
         <div className={styles.leftSide}>
-          <div className={styles.logo}></div>
+          <div className={styles.logo}   />
+          <button>Home</button>
+          <button>History</button>
+          <button>My List</button>
         </div>
         <div className={styles.rightSide}>
-          <div>search</div>
-          <div>gift</div>
-          <div>bell</div>
+          <div>
+            <SearchIcon style={{ cursor: "not-allowed" }} />
+          </div>
+          <div>
+            <img
+              className={styles.present}
+              src={
+                "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/whiteGift.png"
+              }
+            />
+          </div>
+          <div>
+            <NotificationsOffIcon style={{ cursor: "not-allowed" }} />
+          </div>
           <div className={styles.profile}>
             {profile ? <img src={profile.src} /> : <img src={defaultProfile} />}
             <div className={styles.dropdown}>

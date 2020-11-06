@@ -6,9 +6,18 @@
   box-shadow: 1px 1px 40px 25px black;
 }
 
+.headerBlack {
+  transition: ease-in-out .3s;
+  background-color: black;
+}
+.noHeaderBlack {
+  background-color: none;
+  transition: ease-in-out .5s;
+}
 
 
 header {
+
   z-index: 100;
   position: sticky;
   top: 0;
@@ -18,14 +27,28 @@ header {
   justify-content: space-between;
   .leftSide {
     height: 100%;
+    display: flex;
+    align-items: center;
     .logo {
+
       background-image: url("https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-small.png");
       height: 100%;
       width: 120px;
       object-fit: contain;
-      background-size: 100px;
+      background-size: 120px;
       background-repeat: no-repeat;
       background-position: center;
+      margin: 30px;
+    }
+    button {
+      background: none;
+      outline: none;
+      border: none;
+      color: rgb(200,200,200);
+      padding: 0 15px;
+    }
+    button:active {
+      color: white;
     }
   }
 
@@ -33,10 +56,16 @@ header {
     display: flex;
     justify-content: end;
     align-items: center;
-
-    div {color: white;}
+    div {
+      color: white;
+      .present {
+        cursor: pointer;
+        width: 20px;
+        padding: 0 30px;
+      }
+    }
     .profile {
-      
+      padding-left: 10px;
       display: flex;
       justify-content: left;
       align-items: center;
@@ -61,8 +90,8 @@ header {
       
       position: relative;
       display: inline-block;
-      padding: 55px 50px 50px 60px;
-      transform: translateX(-60px);
+      padding: 55px 50px 20px 60px;
+      transform: translate(-55px, -12px);
       .dropdownContent {
         
         display: none; //NONE
@@ -70,7 +99,7 @@ header {
         background-color: rgba(0,0,0,.8);
         min-width: 150px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        transform: translate(-138px, 18px);
+        transform: translate(-141px, 18px);
         z-index: 1;
         .pointer {
           height: 12px;

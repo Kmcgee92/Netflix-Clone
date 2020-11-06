@@ -30,7 +30,7 @@ with app.app_context():
     testUserProfile1 = Profile(
         user_id=1,
         name="Kasey",
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile1.png",
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile7.png",
     )
     testUserProfile2 = Profile(
         user_id=1,
@@ -40,17 +40,17 @@ with app.app_context():
     testUserProfile3 = Profile(
         user_id=1,
         name="Mom",
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile2.png",
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile6.png",
     )
     testUserProfile4 = Profile(
         user_id=1,
-        name="Alec",
+        name="Jaycee",
         src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile4.png",
     )
     testUserProfile5 = Profile(
         user_id=1,
-        name="Jeff",
-        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile5.png",
+        name="Bubba",
+        src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile2.png",
     )
 
     testUserHistory = History(
@@ -62,6 +62,7 @@ with app.app_context():
     db.session.add(testUserHistory)
     db.session.add(tmdbFirstIndex)
 
+    db.session.commit()
     # add profiles
     db.session.add(testUserProfile1)
     db.session.add(testUserProfile2)

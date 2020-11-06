@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+
   .poster {
   transition: all (.7s);
   margin: 0 2px;
@@ -29,19 +30,29 @@
     transform: translateY(-50%);
     width: 3%;
     height: 100%;
+    border: none;
     background-color: rgba(40, 40, 40, .5);
+    transition: all ease-out .5s;
   }
   
   #goLeft {
     left: 0;
     @extend %btn-styles;
   }
-  
   #goRight {
     right: 0;
     @extend %btn-styles;
   }
-
-
+  #goLeft:hover,
+  #goRight:hover {
+    cursor: pointer;
+  }
+  #goLeft:focus,
+  #goRight:focus {
+    color: white;
+    border: none;
+    outline: none;
+  }
+  
 }
 
