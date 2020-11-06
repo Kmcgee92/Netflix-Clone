@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+
 
 const Poster = (props) => {
-  const { offset, width } = props;
+  const { offset, width, handleTrailer } = props;
   const path = `https://image.tmdb.org/t/p/w${width}`;
   const {
     adult,
@@ -19,7 +21,16 @@ const Poster = (props) => {
     vote_count,
   } = props.object;
 
-  return <img src={`${path}${poster_path}`} />;
+  return (
+    <>
+      <div>
+        <img
+          onClick={() => handleTrailer(props.object)}
+          src={`${path}${poster_path}`}
+        />
+      </div>
+    </>
+  );
 };
 
 export default Poster;

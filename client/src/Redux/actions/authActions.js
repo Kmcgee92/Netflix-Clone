@@ -63,7 +63,7 @@ export const login = (email, password) => {
 };
 //logout
 export const logout = () => async (dispatch) => {
-  const res = await fetch("/api/session/token/remove", {
+  const res = await fetch("/api/users/token/remove", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -85,7 +85,6 @@ export const signup = (name, email, password) => async (dispatch) => {
   });
   if (response.ok) {
     const user = await response.json();
-    console.log(user);
     dispatch(createUser(user));
   }
 };

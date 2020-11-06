@@ -12,7 +12,6 @@ const Signup = () => {
   const [email] = useState(history.location.state.email);
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
-  console.log(name);
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const auth = useSelector((state) => state.auth);

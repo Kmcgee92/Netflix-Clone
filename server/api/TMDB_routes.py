@@ -17,7 +17,7 @@ def nexlix_originals():
 @TMDB.route('/trending')
 def trending():
     res = requests.get(
-        f"{TMDB_BASE_URL}/trending/all/week?api_key={TMDB_API_KEY}&include_video=true&language=en-US")
+        f"{TMDB_BASE_URL}/trending/tv/week?api_key={TMDB_API_KEY}&include_video=true&language=en-US")
     return jsonify(res.json())
 
 

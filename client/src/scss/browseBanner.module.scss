@@ -1,0 +1,23 @@
+.header {
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  top: -62px;
+  height: calc(70vh + 62px);
+
+}
+
+.placeholder {
+  background-image: url("https://image.tmdb.org/t/p/original/1fUcKFDy58DhWYd5Y7Nu5DgpxaE.jpg");
+  object-fit: contain;
+  height: 100%;
+  background-repeat: no-repeat;
+
+}
+
+.bannershadow {
+  z-index: -1;
+  position: relative;
+  box-shadow: 1px 1px 35px 110px rgb(20,20,20);
+
+}

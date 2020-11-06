@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from server.models import db, User
+from server.models import db, User, Profile
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
@@ -50,10 +50,10 @@ def login():
         # Set the JWT cookies in the response
         resp = jsonify(
             {'login': True,
-            "access_token": access_token,
-            "refresh_token": refresh_token,
+             "access_token": access_token,
+             "refresh_token": refresh_token,
              **loggedInUser
-            }
+             }
         )
         set_access_cookies(resp, access_token)
         set_refresh_cookies(resp, refresh_token)
@@ -103,6 +103,16 @@ def signup():
     set_access_cookies(resp, access_token)
     set_refresh_cookies(resp, refresh_token)
     return resp, 200
+
+
+@user.route('/profiles/<id>')
+def profiles(id):
+    try:
+        response = Profile.query.filter_by(user_id=id)
+    except:
+        return jsonify({"error": "something failed"})
+
+    return {"profiles": [profile.to_dict() for profile in response]}
 
 # persistant sessions
 
