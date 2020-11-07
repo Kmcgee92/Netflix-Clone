@@ -1,8 +1,8 @@
 import React from "react";
 
-const ProfileSelection = ({ handleSetProfile, name, src }) => {
+const ProfileSelection = ({ profileId, handleSetProfile, name, src }) => {
   return (
-    <div onClick={() => handleSetProfile(name, src)}>
+    <div onClick={() => handleSetProfile(name, src, profileId)}>
       <img src={src} alt={src} />
       <div>{name}</div>
     </div>

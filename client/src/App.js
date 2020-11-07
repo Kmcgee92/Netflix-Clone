@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { generateSession } from "./Redux/actions/authActions";
+import { getProfiles } from "./Redux/actions/profileActions";
 
 //core components
 import GetStarted from "./components/GetStarted/GetStarted";
@@ -22,7 +23,10 @@ function App() {
     if (!auth.login) {
       dispatch(generateSession());
     }
-  }, []);
+    if (auth.id) {
+      dispatch(getProfiles(auth.id));
+    }
+  }, [auth.id]);
   // auth? loading?
 
   // if (loading) return null;

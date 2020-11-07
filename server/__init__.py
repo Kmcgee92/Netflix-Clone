@@ -18,6 +18,8 @@ app.config.from_object(Config)
 # setup jwt config
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 60000
+app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 60000
 
 
 app.register_blueprint(user, url_prefix='/api/users')

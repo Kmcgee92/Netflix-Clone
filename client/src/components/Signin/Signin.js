@@ -33,7 +33,13 @@ const Signin = () => {
           <div className={styles.bannerShadow} />
           <div className={styles.banner}>
             <div className={styles.header}>
-              <div className={styles.logo}>Nexflix</div>
+              <div
+                onClick={() => history.push("/browse")}
+                style={{ cursor: "pointer" }}
+                className={styles.logo}
+              >
+                Nexflix
+              </div>
             </div>
             <div className={styles.container}>
               <div className={styles.signinCard}>

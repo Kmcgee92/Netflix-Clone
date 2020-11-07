@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { updateUserProfile } from "../../Redux/actions/authActions";
 //core components
 import ProfileSelection from "./ProfileSelection";
 
@@ -7,39 +10,14 @@ import ProfileSelection from "./ProfileSelection";
 import styles from '../../scss/profileSelector.module.scss'
 
 const ProfileSelector = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
+  const profiles = useSelector((state) => state.profiles);
+  const userId = useSelector((state) => state.auth.id);
 
-  const profiles = [
-    {
-      name: "Kasey",
-      src:
-        "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile1.png",
-    },
-    {
-      name: "Mylo",
-      src:
-        "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile2.png",
-    },
-    {
-      name: "Makayla",
-      src:
-        "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile3.png",
-    },
-    {
-      name: "Alec",
-      src:
-        "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile4.png",
-    },
-    {
-      name: "Jeff",
-      src:
-        "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile5.png",
-    },
-  ];
-
-  const handleSetProfile = (name, src) => {
-    console.log(name, src);
-    // dispatch(setProfile)
+  const handleSetProfile = (name, src, profileId) => {
+    dispatch(updateUserProfile(userId, profileId));
+    // will update user based on selection
     history.push("/browse");
   };
   return (
@@ -52,11 +30,16 @@ const ProfileSelector = () => {
       </div>
       <div className={styles.body}>
         <div className={styles.container}>
-          <h1>Who's watching?</h1>
+          {profiles.length > 0 ? (
+            <h1>Who's watching?</h1>
+          ) : (
+            <h1>You dont have any profiles!</h1>
+          )}
           <div className={styles.profiles}>
             {profiles.map((profile, id) => (
               <ProfileSelection
                 key={id}
+                profileId={profile.id}
                 name={profile.name}
                 src={profile.src}
                 handleSetProfile={handleSetProfile}

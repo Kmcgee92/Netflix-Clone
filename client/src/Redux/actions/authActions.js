@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 export const SET_USER = "SET_USER";
 export const REMOVE_USER = "REMOVE_USER";
 export const CREATE_USER = "CREATE_USER";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 //!ACTIONS
 export const setUser = (user) => {
@@ -22,6 +23,13 @@ export const createUser = (user) => {
   return {
     type: CREATE_USER,
     user,
+  };
+};
+
+const updateProfile = (profileId) => {
+  return {
+    type: UPDATE_PROFILE,
+    profileId,
   };
 };
 
@@ -63,7 +71,7 @@ export const login = (email, password) => {
 };
 //logout
 export const logout = () => async (dispatch) => {
-  const res = await fetch("/api/session/token/remove", {
+  const res = await fetch("/api/users/token/remove", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -85,7 +93,22 @@ export const signup = (name, email, password) => async (dispatch) => {
   });
   if (response.ok) {
     const user = await response.json();
-    console.log(user);
     dispatch(createUser(user));
   }
+};
+
+
+export const updateUserProfile = (userId, profileId) => async (dispatch) => {
+  const res = await fetch(`/api/users/profiles/${userId}/update/${profileId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (res.ok) {
+    const { profile } = await res.json();
+    dispatch(updateProfile(profileId));
+  }
+  return res;
 };
