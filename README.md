@@ -1,6 +1,19 @@
 # Nexflex
 ## My Netflix-Clone
 **Browse Movies and Series and view Trailers**
+#
+
+# Demonstrations
+
+## sign in or create an account: 
+<img width="600" src="./Documentation/gifs-for-readme/signin.gif">
+
+## select your profile:
+<img width="600" src="./Documentation/gifs-for-readme/profile-selection2.gif">
+
+## and browse the site!! There's plenty to explore:
+<img width="600" src="./Documentation/gifs-for-readme/browse.gif">
+
 ### an app by:
 - Kasey McGee
 # App Description
