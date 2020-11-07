@@ -7,6 +7,12 @@ import BrowseBanner from "./BrowseBanner";
 
 //styles
 import styles from '../../scss/browse.module.scss'
+
+//mui
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import TwitterIcon from "@material-ui/icons/Twitter";
+
 const Browse = () => {
   return (
     <>
@@ -79,8 +85,71 @@ const Browse = () => {
           poster={true}
           tall={true}
         />
-        {/* footer 30% of vh */}
       </div>
+      <footer className={styles.browseFooter}>
+        <section>
+          <div className={styles.questions}>
+            questions? check out my repo!
+            <a
+              className={styles.githubLink}
+              href="https://github.com/Kmcgee92/Netflix-Clone"
+            >
+              KmcGee92
+            </a>
+          </div>
+          <div className={styles.socialMedia}>
+            <div>
+              <a href="https://www.facebook.com/kasey.mcgee.73">
+                <FacebookIcon
+                  style={{ fontSize: 40 }}
+                  className={styles.mediaLink}
+                />
+              </a>
+            </div>
+            <div>
+              <a href="https://www.instagram.com/mcgeekasey/">
+                <InstagramIcon
+                  style={{ fontSize: 40 }}
+                  className={styles.mediaLink}
+                />
+              </a>
+            </div>
+            <div>
+              <a href="https://twitter.com/Kmcgee92">
+                <TwitterIcon
+                  style={{ fontSize: 40 }}
+                  className={styles.mediaLink}
+                />
+              </a>
+            </div>
+          </div>
+          <div className={styles.netflixFooter}>
+            <div>
+              <span>Audio and Subtitles</span>
+              <span>Audio Description</span>
+              <span>Help Center</span>
+              <span>Gift Cards</span>
+            </div>
+            <div>
+              <span>Media Center</span>
+              <span>Investor Relations</span>
+              <span>Jobs</span>
+              <span>Terms of Use</span>
+            </div>
+            <div>
+              <span>Privacy</span>
+              <span>Legal Notices</span>
+              <span>Cookie Preferences</span>
+              <span>Corporate Information</span>
+            </div>
+            <div>
+              <span>Contact Us</span>
+            </div>
+          </div>
+          <div className={styles.copyright}>© made in 2020 by Kasey McGee</div>
+        </section>
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"></img>
+      </footer>
     </>
   );
 };

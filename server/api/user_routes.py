@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from sqlalchemy import update
 from server.models import db, User, Profile
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import (
@@ -113,6 +114,18 @@ def profiles(id):
         return jsonify({"error": "something failed"})
 
     return {"profiles": [profile.to_dict() for profile in response]}
+
+
+@user.route('/profiles/<id>/update/<profileId>', methods=['PUT'])
+def profiles_update(id, profileId):
+    try:
+        queriedUser = User.query.filter_by(id=id).first()
+    except:
+        return jsonify({"error": "something failed"})
+    queriedUser.profile = profileId
+    db.session.commit()
+    userData = queriedUser.to_dict()
+    return jsonify({"profile": userData["profile"]})
 
 # persistant sessions
 

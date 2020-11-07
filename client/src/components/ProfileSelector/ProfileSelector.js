@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 //redux
-import {useSelector} from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
+import { updateUserProfile } from "../../Redux/actions/authActions";
 //core components
 import ProfileSelection from "./ProfileSelection";
 
@@ -9,15 +10,14 @@ import ProfileSelection from "./ProfileSelection";
 import styles from '../../scss/profileSelector.module.scss'
 
 const ProfileSelector = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const profiles = useSelector((state) => state.profiles);
-  const [currentProfile, setCurrentProfile] = useState();
+  const userId = useSelector((state) => state.auth.id);
 
-  const handleSetProfile = (name, src) => {
-    console.log(name, src);
+  const handleSetProfile = (name, src, profileId) => {
+    dispatch(updateUserProfile(userId, profileId));
     // will update user based on selection
-    // bonus goal
-    // dispatch(setProfile)
     history.push("/browse");
   };
   return (
@@ -31,18 +31,20 @@ const ProfileSelector = () => {
       <div className={styles.body}>
         <div className={styles.container}>
           {profiles.length > 0 ? (
-            <h1>Who's watching?</h1>) : 
-            (<h1>You dont have any profiles!</h1>)
-          }
+            <h1>Who's watching?</h1>
+          ) : (
+            <h1>You dont have any profiles!</h1>
+          )}
           <div className={styles.profiles}>
-              {profiles.map((profile, id) => (
-                  <ProfileSelection
-                    key={id}
-                    name={profile.name}
-                    src={profile.src}
-                    handleSetProfile={handleSetProfile}
-                  />
-                ))}
+            {profiles.map((profile, id) => (
+              <ProfileSelection
+                key={id}
+                profileId={profile.id}
+                name={profile.name}
+                src={profile.src}
+                handleSetProfile={handleSetProfile}
+              />
+            ))}
           </div>
           <div className={styles.manage_profiles}>
             <button>manage profiles</button>

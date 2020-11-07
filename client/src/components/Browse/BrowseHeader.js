@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../Redux/actions/authActions";
+import { logout, updateUserProfile } from "../../Redux/actions/authActions";
 
 //styles
 import styles from "../../scss/browseHeader.module.scss";
@@ -37,6 +37,10 @@ const Header = () => {
     history.push("/");
   };
 
+  const handleActiveProfile = (profileId) => {
+    dispatch(updateUserProfile(reduxState.auth.id, profileId));
+  };
+
   const defaultProfile =
     "https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/nexflix-profiles/profile0.png";
 
@@ -63,10 +67,10 @@ const Header = () => {
       <div className={styles.headerShadow} />
       <header className={scrollEffect}>
         <div className={styles.leftSide}>
-          <div className={styles.logo}   />
-          <button>Home</button>
-          <button>History</button>
-          <button>My List</button>
+          <div className={styles.logo} />
+          <a href="#">Home</a>
+          <a href="/history">History</a>
+          <a href="/watchlist">My List</a>
         </div>
         <div className={styles.rightSide}>
           <div>
@@ -95,7 +99,15 @@ const Header = () => {
                   src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/triangle2.png"
                 />
                 {reduxState.profiles.map((profile, i) => (
-                  <div className={styles.dropdownItem} key={i}>
+                  <div
+
+                                       onClick={()  => handleActiveProfile(profile.id)}
+                  
+                     className={styles.dropdownItem}
+                  
+                     key={i}
+                  
+                  >
                     <img src={profile.src}></img>
                     <div>{profile.name}</div>
                   </div>

@@ -7,16 +7,22 @@ import styles from "../../scss/browseBanner.module.scss";
 //mui 
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import VolumeUpIcon from "@material-ui/icons/VolumeUp";
+import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 
 const BrowseBanner = (props) => {
   const history = useHistory()
   const { title, backdrop, rating, overview } = props;
   const [video, setVideo] = useState(false);
+  const [mute, setMute] = useState(true);
   const opts = {
     width: "100%",
     height: "800",
     playerVars: {
       autoplay: 1,
+      mute: `${mute}`,
+      loop: 1,
+      controls: 2,
     },
   };
 
@@ -52,7 +58,16 @@ const BrowseBanner = (props) => {
                       </div>
                     </a>
                   </div>
-                  <div className={styles.rating}>{rating}</div>
+                  <div>
+                    <div className={styles.volume}>
+                      {mute ? (
+                        <VolumeOffIcon onClick={() => setMute(!mute)} />
+                      ) : (
+                        <VolumeUpIcon onClick={() => setMute(!mute)} />
+                      )}
+                    </div>
+                    <span className={styles.rating}>{rating}</span>
+                  </div>
                 </div>
               </section>
             </>
@@ -61,7 +76,7 @@ const BrowseBanner = (props) => {
               <img src={`https://image.tmdb.org/t/p/original/${backdrop}`} />
 
               <section>
-                <h1>Hope you enjoy mom!</h1>
+                <h1>{title}</h1>
                 <h4>{overview}</h4>
                 <div className={styles.span}>
                   <div>
