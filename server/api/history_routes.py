@@ -29,11 +29,9 @@ def history_add(id):
     # no TMDB_history present add row and then add history
     if not TMDB_historyId:
         newInsert = TMDB_history(
-            original_name=data['original_name'],
             name=data['name'],
-            vote_count=data['vote_count'],
-            backdrop_path=data['backdrop_path'],
-            poster_path=data['poster_path'],
+            backdrop=data['backdrop'],
+            poster=data['poster'],
             original_language=data['original_language'],
             tmdb_id=data['id'],
             vote_average=data['vote_average'],

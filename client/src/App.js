@@ -11,6 +11,7 @@ import Browse from "./components/Browse/Browse";
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
 import NotFound from "./components/NotFound/NotFound";
+import History from "./components/History/History";
 
 
 function App() {
@@ -39,6 +40,10 @@ function App() {
 
         <Route exact path="/browse">
           <Browse />
+        </Route>
+
+        <Route exact path="/history">
+          <History />
         </Route>
 
         <Route exact path="/login">

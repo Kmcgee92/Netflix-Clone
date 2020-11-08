@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Youtube from "react-youtube";
-import { firstAttempt } from "./movieFetch";
+
+//redux
+import {useSelector, useDispatch} from 'react-redux'
+import {addObjectToHistory} from '../../Redux/actions/historyActions'
 
 //components
 import Poster from '../Poster/Poster'
+//trailer components
+import Youtube from "react-youtube";
+import { firstAttempt } from "./movieFetch";
 // styles
 import styles from "../../scss/slider.module.scss";
-
 // mui
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 
 const Slider = (props) => {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+
   const {
     title,
     url,
@@ -64,8 +71,8 @@ const Slider = (props) => {
       setTrailerUrl("");
       return;
     }
-    const vLink = await firstAttempt(movie, setTrailerUrl);
-    // console.log("this is the vLink", vLink);
+    await firstAttempt(movie, setTrailerUrl);
+    dispatch(addObjectToHistory(auth.id, movie));
   };
 
   return (

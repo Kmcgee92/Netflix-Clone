@@ -49,13 +49,11 @@ class TMDB_history(db.Model):
     __tablename__ = 'tmdb_history'
 
     id = db.Column(db.Integer, primary_key=True)
-    original_name = db.Column(db.String(255))
     name = db.Column(db.String(255))
-    vote_count = db.Column(db.Integer)
-    backdrop_path = db.Column(db.String(255))
-    poster_path = db.Column(db.String(255))
+    backdrop = db.Column(db.String(255))
+    poster = db.Column(db.String(255))
     original_language = db.Column(db.String(255))
-    tmdb_id = db.Column(db.Integer)
+    tmdb_id = db.Column(db.Integer, unique=True)
     vote_average = db.Column(db.Integer)
     overview = db.Column(db.String)
 
@@ -64,11 +62,9 @@ class TMDB_history(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "original_name": self.original_name,
             "name": self.name,
-            "vote_count": self.vote_count,
-            "backdrop_path": self.backdrop_path,
-            "poster_path": self.poster_path,
+            "backdrop": self.backdrop,
+            "poster": self.poster,
             "original_language": self.original_language,
             "tmdb_id": self.tmdb_id,
             "vote_average": self.vote_average,
@@ -82,7 +78,6 @@ class Watchlist(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    original_name = db.Column(db.String(255))
     name = db.Column(db.String(255), unique=True)
     vote_count = db.Column(db.Integer)
     backdrop_path = db.Column(db.String(255))

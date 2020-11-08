@@ -32,6 +32,11 @@ const Poster = (props) => {
     vote_count,
   } = props.object;
 
+  const managePosterClick = () => {
+    handleTrailer(props.object)
+  }
+
+
   return (
     <>
       <div
@@ -40,13 +45,13 @@ const Poster = (props) => {
       >
         {poster && (
           <img
-            onClick={() => handleTrailer(props.object)}
+            onClick={managePosterClick}
             src={`${path}${poster_path}`}
           />
         )}
         {backdrop && (
           <img
-            onClick={() => handleTrailer(props.object)}
+            onClick={managePosterClick}
             src={`${path}${backdrop_path}`}
           />
         )}
