@@ -67,7 +67,7 @@ def login():
 def signup():
     name = request.json.get('name', None)
     email = request.json.get('email', None)
-    pic = request.json.get('pic', 1)
+    profile = request.json.get('profile', 1)
     password = request.json.get('password', None)
     errors = {}
     if not name:
@@ -84,7 +84,7 @@ def signup():
     new_user = User(
         name=name,
         email=email,
-        pic=pic,
+        profile=profile,
         hashed_password=hashed_pass
     )
     db.session.add(new_user)
