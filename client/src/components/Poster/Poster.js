@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 //styles
 import styles from '../../scss/poster.module.scss'
 
+//mui
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+
 const Poster = (props) => {
   const {
     poster,
@@ -32,6 +35,9 @@ const Poster = (props) => {
     vote_count,
   } = props.object;
 
+  const handleAddToWatchList = () => {
+    console.log("lets go!");
+  };
   const managePosterClick = () => {
     handleTrailer(props.object)
   }
@@ -39,21 +45,28 @@ const Poster = (props) => {
 
   return (
     <>
-      <div
-        style={{ transform: `translate(${offset}%)` }}
-        className={classProp}
-      >
+      <div style={{ transform: `translate(${offset}%)` }} className={classProp}>
         {poster && (
-          <img
-            onClick={managePosterClick}
-            src={`${path}${poster_path}`}
-          />
+          <div className={styles.container}>
+            <img onClick={managePosterClick} src={`${path}${poster_path}`} />
+            <div className={styles.posterOverlay}>
+              <div onClick={handleAddToWatchList}>
+                <AddCircleOutlineIcon />
+              </div>
+              <div>Details</div>
+            </div>
+          </div>
         )}
         {backdrop && (
-          <img
-            onClick={managePosterClick}
-            src={`${path}${backdrop_path}`}
-          />
+          <div className={styles.container}>
+            <img onClick={managePosterClick} src={`${path}${backdrop_path}`} />
+            <div className={styles.posterOverlay}>
+              <div onClick={handleAddToWatchList}>
+                <AddCircleOutlineIcon />
+              </div>
+              <div>Details</div>
+            </div>
+          </div>
         )}
       </div>
     </>

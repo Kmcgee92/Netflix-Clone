@@ -19,7 +19,6 @@ export const addObjectToWatchlist = (userId, data) => async (dispatch) => {
 
   if (res.ok) {
     const data = res.json();
-    console.log(data);
   }
 };
 // //THUNKS

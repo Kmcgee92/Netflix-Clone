@@ -8,7 +8,6 @@ export const history = (state = [], action) => {
   let nextState;
   switch (action.type) {
     case SET_HISTORY:
-      console.log(action.list);
       nextState = [...state, ...action.list];
       return nextState;
     case ADD_HISTORY:

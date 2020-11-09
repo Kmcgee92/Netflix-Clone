@@ -10,8 +10,12 @@ import Poster from '../Poster/Poster'
 import styles from "../../scss/history.module.scss";
 const History = () => {
   const history = useSelector((state) => state.history);
-  console.log("inside history", history);
-    const path = `https://image.tmdb.org/t/p/w400`;
+    const path = `https://image.tmdb.org/t/p/w200`;
+
+    const handleDetails = (movie) => {
+      console.log(movie);
+      console.log("need details page");
+    };
   return (
     <>
       <BrowseHeader />
@@ -27,7 +31,7 @@ const History = () => {
                   <div className={styles.poster}>
                     <div className={styles.posterOverlay}>
                       <div></div>
-                      <div>details</div>
+                      <div onClick={() => handleDetails(movie)}>details</div>
                     </div>
                     <img src={`${path}${movie.poster}`} />
                   </div>

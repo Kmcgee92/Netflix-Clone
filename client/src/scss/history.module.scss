@@ -1,16 +1,17 @@
 .historyWrapper {
   padding: 0 40px;
   color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
+    border-bottom: 1px solid grey;
     h2 {
       color: white;
       font-weight: 200;
       font-size: 30px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
   }
   section {
@@ -31,26 +32,10 @@
     flex-wrap: wrap;
     .poster {
     flex-grow: 1;
-    width: calc(100% * (1/4) - 80px);
-    @media(max-width: 1700px){
-      width: calc(100% * (1/3) - 80px);
-      
-    }
-    @media(max-width: 1394px){
-      width: calc(100% * (1/2) - 80px);
-      
-    }
-    @media(max-width: 942px){
-      display: flex;
-
-      flex-direction: column;
-      width: calc(100% - 80px);
-      
-    }
     .posterOverlay {
       z-index: -1;
       position: absolute;
-      width: 25rem;
+      width: 84%;
       height: 60px;
       transition: .5s ease;
       display: flex;
@@ -58,9 +43,10 @@
       align-items: center;
       div {
         padding: 10px;
+        font-size: 10px;
       }
       div:hover {
-        cursor: pointer;
+        cursor: not-allowed;
         text-decoration: underline;
       }
     }
