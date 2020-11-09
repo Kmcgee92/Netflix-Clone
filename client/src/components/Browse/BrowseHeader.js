@@ -68,7 +68,7 @@ const Header = () => {
       <header className={scrollEffect}>
         <div className={styles.leftSide}>
           <div className={styles.logo} />
-          <a href="#">Home</a>
+          <a href="/browse">Home</a>
           <a href="/history">History</a>
           <a href="/watchlist">My List</a>
         </div>
@@ -100,13 +100,9 @@ const Header = () => {
                 />
                 {reduxState.profiles.map((profile, i) => (
                   <div
-
-                                       onClick={()  => handleActiveProfile(profile.id)}
-                  
-                     className={styles.dropdownItem}
-                  
-                     key={i}
-                  
+                    onClick={() => handleActiveProfile(profile.id)}
+                    className={styles.dropdownItem}
+                    key={i}
                   >
                     <img src={profile.src}></img>
                     <div>{profile.name}</div>

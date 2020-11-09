@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { generateSession } from "./Redux/actions/authActions";
 import { getProfiles } from "./Redux/actions/profileActions";
+import { getHistory } from "./Redux/actions/historyActions";
 
 //core components
 import GetStarted from "./components/GetStarted/GetStarted";
@@ -26,6 +27,7 @@ function App() {
     }
     if (auth.id) {
       dispatch(getProfiles(auth.id));
+      dispatch(getHistory(auth.id));
     }
   }, [auth.id]);
   // auth? loading?

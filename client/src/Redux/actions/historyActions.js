@@ -1,8 +1,12 @@
+export const SET_HISTORY = "SET_HISTORY";
 export const ADD_HISTORY = "ADD_HISTORY";
 export const CLEAR_HISTORY = "CLEAR_HISTORY";
 
 //Actions
-
+const setHistory = (list) => ({
+  type: SET_HISTORY,
+  list,
+});
 export const addToHistory = (film) => {
   return {
     type: ADD_HISTORY,
@@ -44,6 +48,16 @@ export const addObjectToHistory = (userId, data) => async (dispatch) => {
       // just going to send it all for now, might be meaningless
       dispatch(addToHistory(data));
     }
+  }
+  return res;
+};
+
+
+export const getHistory = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/history/${userId}`);
+  if (res.ok) {
+    const { list } = await res.json();
+    dispatch(setHistory(list));
   }
   return res;
 };
