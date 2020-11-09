@@ -22,11 +22,17 @@ const History = () => {
         </div>
         <section>
           {history
-                ? history.map((movie, i) => (
-                  <div key={i} className={styles.poster}>
-                    <img src={`${path}${movie.poster}`}/>
+            ? history.map((movie, i) => (
+                <div key={i} className={styles.container}>
+                  <div className={styles.poster}>
+                    <div className={styles.posterOverlay}>
+                      <div></div>
+                      <div>details</div>
+                    </div>
+                    <img src={`${path}${movie.poster}`} />
                   </div>
-                ))
+                </div>
+              ))
             : null}
         </section>
       </div>
