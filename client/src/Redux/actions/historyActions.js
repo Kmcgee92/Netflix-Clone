@@ -61,3 +61,15 @@ export const getHistory = (userId) => async (dispatch) => {
   }
   return res;
 };
+export const clearHistory = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/history/${userId}/clear`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (res.ok) {
+    dispatch(clearAllHistory());
+  }
+  return res;
+};

@@ -67,7 +67,11 @@ const Header = () => {
       <div className={styles.headerShadow} />
       <header className={scrollEffect}>
         <div className={styles.leftSide}>
-          <div className={styles.logo} />
+          <div
+            onClick={() => history.push("/browse")}
+            style={{ cursor: "pointer" }}
+            className={styles.logo}
+          />
           <a href="/browse">Home</a>
           <a href="/history">History</a>
           <a href="/watchlist">My List</a>

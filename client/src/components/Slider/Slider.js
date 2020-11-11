@@ -81,7 +81,7 @@ const Slider = (props) => {
       <div className={styles.container}>
         {fetched.map((object, i) => (
           <Poster
-            classProp = {styles.poster}
+            classProp={styles.poster}
             handleTrailer={handleTrailer}
             object={object}
             key={i}
@@ -104,7 +104,7 @@ const Slider = (props) => {
       {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
     </>
   );
-};;;;;;;;;;;;;
+};
 
 export default Slider;
 

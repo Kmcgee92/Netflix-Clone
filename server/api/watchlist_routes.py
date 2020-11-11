@@ -17,11 +17,9 @@ def watchlist_add(id):
     print(data)
     newEntry = Watchlist(
         user_id=id,
-        original_name=data['original_name'],
         name=data['name'],
-        vote_count=data['vote_count'],
-        backdrop_path=data['backdrop_path'],
-        poster_path=data['poster_path'],
+        backdrop=data['backdrop'],
+        poster=data['poster'],
         original_language=data['original_language'],
         tmdb_id=data['id'],
         vote_average=data['vote_average'],
@@ -31,9 +29,8 @@ def watchlist_add(id):
         db.session.add(newEntry)
         db.session.commit()
     except:
-        return jsonify({"msg": "error occured or data already exists"})
-
-    return jsonify({"msg": "success"})
+        return {}
+    return jsonify(**newEntry.to_dict())
 
 
 @watchlist.route('/<watchlistId>/remove', methods=['DELETE'])

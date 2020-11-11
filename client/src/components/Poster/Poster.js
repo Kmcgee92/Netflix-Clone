@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
+//redux
+import {useSelector, useDispatch} from 'react-redux'
 
 //styles
 import styles from '../../scss/poster.module.scss'
 
 //mui
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import { addObjectToWatchlist } from "../../Redux/actions/watchlistActions";
 
 const Poster = (props) => {
+  const userId = useSelector((state) => state.auth.id);
+  const watchlist = useSelector((state) => state.watchlist);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const {
     poster,
     backdrop,
@@ -35,13 +45,25 @@ const Poster = (props) => {
     vote_count,
   } = props.object;
 
+  const [inWatchlist, setInWatchlist] = useState(false);
+
   const handleAddToWatchList = () => {
-    console.log("lets go!");
+    setInWatchlist(true);
+    dispatch(addObjectToWatchlist(userId, props.object));
   };
   const managePosterClick = () => {
-    handleTrailer(props.object)
-  }
-
+    handleTrailer(props.object);
+  };
+  useEffect(()=>{
+    if(watchlist.length > 0){
+      watchlist.forEach((title)  => {
+        if (title.tmdb_id == id)  {
+          setInWatchlist(true);
+        }
+      });
+      return () => ""
+    }
+  },[watchlist])
 
   return (
     <>
@@ -50,9 +72,18 @@ const Poster = (props) => {
           <div className={styles.container}>
             <img onClick={managePosterClick} src={`${path}${poster_path}`} />
             <div className={styles.posterOverlay}>
-              <div onClick={handleAddToWatchList}>
-                <AddCircleOutlineIcon />
-              </div>
+              {inWatchlist ? (
+                <div
+                  onClick={()=> history.push('/watchlist')}
+                  style={{ cursor: "pointer", color: "red" }}
+                >
+                  In Watchlist
+                </div>
+              ) : (
+                <div onClick={handleAddToWatchList}>
+                  <AddCircleOutlineIcon />
+                </div>
+              )}
               <div>Details</div>
             </div>
           </div>
@@ -61,9 +92,18 @@ const Poster = (props) => {
           <div className={styles.container}>
             <img onClick={managePosterClick} src={`${path}${backdrop_path}`} />
             <div className={styles.posterOverlay}>
-              <div onClick={handleAddToWatchList}>
-                <AddCircleOutlineIcon />
-              </div>
+              {inWatchlist ? (
+                <div
+                  onClick={() => history.push("/watchlist")}
+                  style={{ cursor: "pointer", color: "red" }}
+                >
+                  In Watchlist
+                </div>
+              ) : (
+                <div onClick={handleAddToWatchList}>
+                  <AddCircleOutlineIcon />
+                </div>
+              )}
               <div>Details</div>
             </div>
           </div>

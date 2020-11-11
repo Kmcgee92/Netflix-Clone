@@ -22,11 +22,13 @@
   }
   div:hover {
   transform: scale(1.1);
+  cursor: pointer;
     text-decoration: underline;
   }
   }
 }
   .container:hover .posterOverlay {
+    position: absolute;
     background-color: rgba(20,20,20,.5);
     z-index: 2000;
 
