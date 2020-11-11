@@ -13,7 +13,7 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 const BrowseBanner = (props) => {
   const history = useHistory()
   const { title, backdrop, rating, overview } = props;
-  const [video, setVideo] = useState(false);
+  const [video, setVideo] = useState(true);
   const [mute, setMute] = useState(true);
   const opts = {
     width: "100%",
@@ -21,8 +21,15 @@ const BrowseBanner = (props) => {
     playerVars: {
       autoplay: 1,
       mute: `${mute}`,
-      loop: 1,
       controls: 2,
+      start: 20,
+      loop: 1,
+      playlist: "JTHWAQG6Gxw",
+      rel: 0,
+      modestbranding: 1,
+      iv_load_policy: 3,
+      controls: 2,
+      showinfo: 0
     },
   };
 
@@ -58,7 +65,6 @@ const BrowseBanner = (props) => {
                       </div>
                     </a>
                   </div>
-                  <div>
                     <div className={styles.volume}>
                       {mute ? (
                         <VolumeOffIcon onClick={() => setMute(!mute)} />
@@ -66,14 +72,15 @@ const BrowseBanner = (props) => {
                         <VolumeUpIcon onClick={() => setMute(!mute)} />
                       )}
                     </div>
-                    <span className={styles.rating}>{rating}</span>
+                    <div className={styles.rating}>{rating}</div>
                   </div>
-                </div>
               </section>
             </>
           ) : (
             <>
-              <img src={`https://image.tmdb.org/t/p/original/${backdrop}`} />
+                <div>
+                  <img src={`https://image.tmdb.org/t/p/original/${backdrop}`} />
+                </div>
 
               <section>
                 <h1>{title}</h1>
@@ -91,7 +98,7 @@ const BrowseBanner = (props) => {
                       </div>
                     </a>
                   </div>
-                  <div className={styles.rating}>{rating}</div>
+                <div className={styles.rating}>{rating}</div>
                 </div>
               </section>
             </>
