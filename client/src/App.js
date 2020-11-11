@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { generateSession } from "./Redux/actions/authActions";
 import { getProfiles } from "./Redux/actions/profileActions";
+import { getHistory } from "./Redux/actions/historyActions";
+import { getWatchlist } from "./Redux/actions/watchlistActions";
 
 //core components
 import GetStarted from "./components/GetStarted/GetStarted";
@@ -11,6 +13,8 @@ import Browse from "./components/Browse/Browse";
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
 import NotFound from "./components/NotFound/NotFound";
+import History from "./components/History/History";
+import Watchlist from "./components/Watchlist/Watchlist";
 
 
 function App() {
@@ -25,6 +29,8 @@ function App() {
     }
     if (auth.id) {
       dispatch(getProfiles(auth.id));
+      dispatch(getHistory(auth.id));
+      dispatch(getWatchlist(auth.id));
     }
   }, [auth.id]);
   // auth? loading?
@@ -39,6 +45,14 @@ function App() {
 
         <Route exact path="/browse">
           <Browse />
+        </Route>
+
+        <Route exact path="/history">
+          <History />
+        </Route>
+
+        <Route exact path="/watchlist">
+          <Watchlist />
         </Route>
 
         <Route exact path="/login">

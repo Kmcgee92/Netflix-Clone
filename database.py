@@ -16,11 +16,9 @@ with app.app_context():
         profile=1
     )
     tmdbFirstIndex = TMDB_history(
-        original_name="Lucifer",
         name="Lucifer",
-        vote_count=6076,
-        backdrop_path="/ta5oblpMlEcIPIS2YGcq9XEkWK2.jpg",
-        poster_path="/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg",
+        backdrop="/ta5oblpMlEcIPIS2YGcq9XEkWK2.jpg",
+        poster="/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg",
         original_language="en",
         tmdb_id=63174,
         vote_average=8.5,

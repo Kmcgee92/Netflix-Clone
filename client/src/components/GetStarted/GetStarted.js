@@ -1,7 +1,7 @@
 import React from "react";
 // redux
-import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../Redux/actions/authActions";
+import { useSelector } from "react-redux";
+
 //core components 
 import ProfileSelector from '../ProfileSelector/ProfileSelector'
 import LandingPage from '../LandingPage/LandingPage'

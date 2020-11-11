@@ -1,0 +1,61 @@
+.historyWrapper {
+  padding: 0 40px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    border-bottom: 1px solid grey;
+    h2 {
+      color: white;
+      font-weight: 200;
+      font-size: 30px;
+    }
+  }
+  section {
+    .container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      img {
+        display: block;
+        transition: all .2s ease-in;
+        transition: all 0s ease-out;
+      }
+    }
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    .poster {
+    flex-grow: 1;
+    .posterOverlay {
+      z-index: -1;
+      position: absolute;
+      width: 89%;
+      height: 60px;
+      transition: .5s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        cursor: pointer;
+        padding: 10px;
+        font-size: 10px;
+      }
+      div:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .container:hover .posterOverlay {
+    background-color: rgba(20,20,20,.5);
+    z-index: 100;
+
+  }
+  }
+
+}

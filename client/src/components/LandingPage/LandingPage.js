@@ -7,6 +7,9 @@ import {login} from '../../Redux/actions/authActions'
 import styles from "../../scss/landingPage.module.scss";
 // mui
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 const LandingPage = () => {
   const history = useHistory()
@@ -69,17 +72,119 @@ const LandingPage = () => {
         </div>
       </div>
       <div className={styles.bannerShadow} />
+      <div className={styles.scrollSection}>
+        <div className={styles.divider} />
+        <section>
+          <div>
+            <h1> Enjoy on your TV.</h1>
+            <h4>
+              Watch on Smart TVs, Playstation, Xbox,
+            </h4>
+              <h4>
+              Chromecase, Apple TV,
+              Blu-ray players, and
+              </h4>
+              <h4>
+              more.
+              </h4>
+          </div>
+          <img src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/Screen+Shot+2020-11-07+at+1.53.33+PM.png" />
+        </section>
+        <div className={styles.divider} />
+        <section>
+          <img src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/Screen+Shot+2020-11-06+at+11.23.13+AM.png" />
+          <div>
+            <h1>Download your shows </h1>
+            <h1>to watch offline.</h1>
+            <h4> Save your favorites easily and always have</h4>
+            <h4>something to watch.</h4>
+          </div>
+        </section>
+        <div className={styles.divider} />
+        <section>
+          <div>
+            <h1>Watch everywhere.</h1>
+            <h4> Stream unlimited movies and TV shows on</h4>
+            <h4> your phone, tablet, laptop, and TV without</h4>
+            <h4> paying more.</h4>
+          </div>
+          <img src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/Screen+Shot+2020-11-06+at+11.23.03+AM.png" />
+        </section>
+      </div>
       <div className={styles.divider} />
-      <div>hello</div>
-      <div className={styles.divider} />
-      <div>hello</div>
-      <div className={styles.divider} />
-      <div>hello</div>
-      <div className={styles.divider} />
-      <div>
-        <footer>
-          Questions? checkout my profile{" "}
-          <a href="kaseymcgee.io">KaseyMcGee.io</a>
+      <div className={styles.faq}>
+        
+      </div>
+
+
+
+      
+      <div className={styles.footerMargin}>
+        <footer className={styles.landingFooter}>
+          <section>
+            <div className={styles.questions}>
+              questions? check out my repo!
+              <a
+                className={styles.githubLink}
+                href="https://github.com/Kmcgee92/Netflix-Clone"
+              >
+                KmcGee92
+              </a>
+            </div>
+            <div className={styles.socialMedia}>
+              <div>
+                <a href="https://www.facebook.com/kasey.mcgee.73">
+                  <FacebookIcon
+                    style={{ fontSize: 40 }}
+                    className={styles.mediaLink}
+                  />
+                </a>
+              </div>
+              <div>
+                <a href="https://www.instagram.com/mcgeekasey/">
+                  <InstagramIcon
+                    style={{ fontSize: 40 }}
+                    className={styles.mediaLink}
+                  />
+                </a>
+              </div>
+              <div>
+                <a href="https://twitter.com/Kmcgee92">
+                  <TwitterIcon
+                    style={{ fontSize: 40 }}
+                    className={styles.mediaLink}
+                  />
+                </a>
+              </div>
+            </div>
+            <div className={styles.netflixFooter}>
+              <div>
+                <span>Audio and Subtitles</span>
+                <span>Audio Description</span>
+                <span>Help Center</span>
+                <span>Gift Cards</span>
+              </div>
+              <div>
+                <span>Media Center</span>
+                <span>Investor Relations</span>
+                <span>Jobs</span>
+                <span>Terms of Use</span>
+              </div>
+              <div>
+                <span>Privacy</span>
+                <span>Legal Notices</span>
+                <span>Cookie Preferences</span>
+                <span>Corporate Information</span>
+              </div>
+              <div>
+                <span>Contact Us</span>
+              </div>
+            </div>
+            <div className={styles.copyright}>
+              © made in 2020 by Kasey McGee
+            </div>
+          </section>
+          <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"></img>
         </footer>
       </div>
     </>
