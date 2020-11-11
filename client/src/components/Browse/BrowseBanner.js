@@ -21,15 +21,13 @@ const BrowseBanner = (props) => {
     playerVars: {
       autoplay: 1,
       mute: `${mute}`,
-      controls: 2,
+
       start: 20,
       loop: 1,
       playlist: "JTHWAQG6Gxw",
       rel: 0,
-      modestbranding: 1,
-      iv_load_policy: 3,
       controls: 2,
-      showinfo: 0
+      showinfo: 0,
     },
   };
 
