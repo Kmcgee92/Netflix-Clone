@@ -61,3 +61,7 @@ def fantasy():
     res = requests.get(
         f"{TMDB_BASE_URL}/discover/movie?api_key={TMDB_API_KEY}&with_genres=14&include_video=true&page=2&language=en-US")
     return jsonify(res.json())
+
+
+# adding search route for additional search page for query results
+# https: // api.themoviedb.org/3/search/movie?api_key = {apikey}& language = en-US & query = {query example: christmas} & page = 1 & include_adult = true

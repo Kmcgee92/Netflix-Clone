@@ -33,9 +33,11 @@ Nexflix is a fullstack app that lets the user explore movies and tv series and w
 -   Movie posters with live trailers organized by category.
 
 # Define Database Functionality + Input Data
-1.  Store user information.
-2.  Store user's history for review and ability to clear history. 
-3.  Store a watchlist to be edited as needed.
+1.  Store user information including status of session.
+  - hashes user password for security.
+  - each user has profiles. Profiles at the moment can be viewed or changed on the demo user and integration is in the works for all users.
+2.  Store user's history for review and ability to clear all history. 
+3.  Store a watchlist to review with ability to remove items from watchlist.
 
 # Tools
 -   VS Code
