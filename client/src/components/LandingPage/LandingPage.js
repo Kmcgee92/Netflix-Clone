@@ -43,7 +43,12 @@ const LandingPage = () => {
             >
               Nexflix
             </div>
-            <button onClick={() => history.push("/login")}>Sign In</button>
+            <div>
+              <button className={styles.demo} onClick={handleDemo}>
+                Try My Demo
+              </button>
+              <button onClick={() => history.push("/login")}>Sign In</button>
+            </div>
           </div>
           <div className={styles.container}>
             <h1>Unlimited movies, TV shows, and more.</h1>
@@ -65,9 +70,6 @@ const LandingPage = () => {
                 <ArrowForwardIosIcon />
               </button>
             </div>
-            <span>
-              <button onClick={handleDemo}>Try My Demo</button>
-            </span>
           </div>
         </div>
       </div>
@@ -77,16 +79,9 @@ const LandingPage = () => {
         <section>
           <div>
             <h1> Enjoy on your TV.</h1>
-            <h4>
-              Watch on Smart TVs, Playstation, Xbox,
-            </h4>
-              <h4>
-              Chromecase, Apple TV,
-              Blu-ray players, and
-              </h4>
-              <h4>
-              more.
-              </h4>
+            <h4>Watch on Smart TVs, Playstation, Xbox,</h4>
+            <h4>Chromecase, Apple TV, Blu-ray players, and</h4>
+            <h4>more.</h4>
           </div>
           <img src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/Screen+Shot+2020-11-07+at+1.53.33+PM.png" />
         </section>
@@ -110,15 +105,28 @@ const LandingPage = () => {
           </div>
           <img src="https://kmcgee92myawsbucket.s3-us-west-2.amazonaws.com/test-images/Screen+Shot+2020-11-06+at+11.23.03+AM.png" />
         </section>
+        <div className={styles.divider} />
+        <div className={styles.secondStarter}>
+          <div className={styles.secondStarterRows}>
+            <span>
+              Ready to watch? Enter your email to create your membership.
+            </span>
+          </div>
+          <div className={styles.secondStarterRows}>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email address"
+            />
+            <button onClick={letsGetStarted}>
+              get started
+              <ArrowForwardIosIcon />
+            </button>
+          </div>
+        </div>
       </div>
       <div className={styles.divider} />
-      <div className={styles.faq}>
-        
-      </div>
+      <div className={styles.faq}></div>
 
-
-
-      
       <div className={styles.footerMargin}>
         <footer className={styles.landingFooter}>
           <section>
