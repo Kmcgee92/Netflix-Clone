@@ -107,14 +107,21 @@ const LandingPage = () => {
         </section>
         <div className={styles.divider} />
         <div className={styles.secondStarter}>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email address"
-          />
-          <button onClick={letsGetStarted}>
-            get started
-            <ArrowForwardIosIcon />
-          </button>
+          <div className={styles.secondStarterRows}>
+            <span>
+              Ready to watch? Enter your email to create your membership.
+            </span>
+          </div>
+          <div className={styles.secondStarterRows}>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email address"
+            />
+            <button onClick={letsGetStarted}>
+              get started
+              <ArrowForwardIosIcon />
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.divider} />
