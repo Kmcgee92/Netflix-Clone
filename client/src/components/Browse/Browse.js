@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 //core components
 import Slider from "../Slider/Slider";
@@ -12,8 +13,16 @@ import styles from '../../scss/browse.module.scss'
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
+  const auth = useSelector((state) => state.auth);
+  const history = useHistory();
+
+  if (auth.msg) {
+    history.push("/login");
+    return <div></div>;
+  }
   return (
     <>
       <BrowseHeader />
