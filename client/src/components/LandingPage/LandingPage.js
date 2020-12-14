@@ -167,25 +167,47 @@ const LandingPage = () => {
             </div>
             <div className={styles.netflixFooter}>
               <div>
-                <span>Audio and Subtitles</span>
-                <span>Audio Description</span>
-                <span>Help Center</span>
-                <span>Gift Cards</span>
+                <span>
+                  <a href="https://www.kaseymcgee.dev">Portfolio</a>
+                </span>
+
+                <span>
+                  <a href="https://www.linkedin.com/in/kasey-mcgee-37aa8979/">
+                    LinkedIn
+                  </a>
+                </span>
+
+                <span>
+                  <a href="https://angel.co/u/kasey-mcgee">AngelList</a>
+                </span>
+
+                <span>
+                  <a href="https://github.com/Kmcgee92">Github</a>
+                </span>
               </div>
               <div>
-                <span>Media Center</span>
-                <span>Investor Relations</span>
-                <span>Jobs</span>
-                <span>Terms of Use</span>
+                <span>
+                  <a href="https://www.facebook.com/kasey.mcgee.73/">
+                    Facebook
+                  </a>
+                </span>
+
+                <span>
+                  <a href="https://twitter.com/Kmcgee92">Twitter</a>
+                </span>
+
+                <span>
+                  <a href="https://www.instagram.com/mcgeekasey/">Instagram</a>
+                </span>
+
+                <span>
+                  <a href="#">Discord: Kasey#0179</a>
+                </span>
               </div>
               <div>
-                <span>Privacy</span>
-                <span>Legal Notices</span>
-                <span>Cookie Preferences</span>
-                <span>Corporate Information</span>
-              </div>
-              <div>
-                <span>Contact Us</span>
+                <span>
+                  <a href="https://kmcgee92.github.io/#footer">Contact Me</a>
+                </span>
               </div>
             </div>
             <div className={styles.copyright}>
