@@ -152,6 +152,12 @@
     justify-content: center;
     width: 100%;
   }
+  .error {
+        color: orange;
+        font-size: 20px;
+        letter-spacing: 1px;
+        transition: ease-in-out 1s;
+      }
   div > span {
     color: white;
     font-size: 120%;
