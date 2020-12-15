@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 //redux
-import {useSelector, useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import {login} from '../../Redux/actions/authActions'
 // styles
 import styles from "../../scss/landingPage.module.scss";
@@ -22,17 +22,18 @@ const LandingPage = () => {
     history.push("/");
   };
   const letsGetStarted = () => {
+    setError(false);
     if (!email) {
-      setError(true);
+      setTimeout(() => setError(true), 200);
     }
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (re.test(email)) {
       history.push("/signup", { email });
       
     }
     else {
-      setError(true);
+      setTimeout(() => setError(true), 200);
     }
   };
 
