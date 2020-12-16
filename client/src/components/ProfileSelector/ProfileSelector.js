@@ -28,7 +28,7 @@ const ProfileSelector = () => {
     <>
       <div className={styles.header_shadow}></div>
       <div className={styles.header}>
-        <a href="/browse">
+        <a style={{ width: "180px" }} href="/browse">
           <div className={styles.logo}></div>
         </a>
       </div>
