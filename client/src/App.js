@@ -15,6 +15,7 @@ import Signup from "./components/Signup/Signup";
 import NotFound from "./components/NotFound/NotFound";
 import History from "./components/History/History";
 import Watchlist from "./components/Watchlist/Watchlist";
+import ProfileManager from "./components/ProfileManager/ProfileManager";
 
 
 function App() {
@@ -41,6 +42,10 @@ function App() {
       <Switch>
         <Route exact path="/">
           <GetStarted />
+        </Route>
+
+        <Route exact path="/manageProfiles">
+          <ProfileManager />
         </Route>
 
         <Route exact path="/browse">

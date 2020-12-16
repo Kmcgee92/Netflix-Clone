@@ -4,25 +4,26 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserProfile } from "../../Redux/actions/authActions";
 //core components
-import ProfileSelection from "./ProfileSelection";
+import ProfileSelection from "../ProfileSelector/ProfileSelection";
 
 //styles
-import styles from '../../scss/profileSelector.module.scss'
+import styles from "../../scss/ProfileManager.module.scss";
 
-const ProfileSelector = () => {
+// mui
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+
+const ProfileManager = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const profiles = useSelector((state) => state.profiles);
   const userId = useSelector((state) => state.auth.id);
 
-  const handleSetProfile = (name, src, profileId) => {
-    dispatch(updateUserProfile(userId, profileId));
-    // will update user based on selection
-    history.push("/browse");
+  const editProfile = (name, src, profileId) => {
+    console.log(name, src, profileId);
   };
-  
-  const handleManager = () => {
-    history.push("/manageProfiles");
+
+  const closeManager = () => {
+    history.push("/");
   };
   return (
     <>
@@ -35,7 +36,7 @@ const ProfileSelector = () => {
       <div className={styles.body}>
         <div className={styles.container}>
           {profiles.length > 0 ? (
-            <h1>Who's watching?</h1>
+            <h1>Manage Profiles:</h1>
           ) : (
             <h1>You dont have any profiles!</h1>
           )}
@@ -46,12 +47,13 @@ const ProfileSelector = () => {
                 profileId={profile.id}
                 name={profile.name}
                 src={profile.src}
-                handleSetProfile={handleSetProfile}
+                editProfile={editProfile}
               />
             ))}
           </div>
+          <AddCircleOutlineIcon />
           <div className={styles.manage_profiles}>
-            <button onClick={handleManager}>manage profiles</button>
+            <button onClick={closeManager}>Done</button>
           </div>
         </div>
       </div>
@@ -59,4 +61,4 @@ const ProfileSelector = () => {
   );
 };
 
-export default ProfileSelector;
+export default ProfileManager;
