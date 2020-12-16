@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 //redux
-import {useSelector, useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import {login} from '../../Redux/actions/authActions'
 // styles
 import styles from "../../scss/landingPage.module.scss";
@@ -12,23 +12,30 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
 const LandingPage = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
   const handleDemo = () => {
-    dispatch(login("testUser@test.io", "password"))
-    history.push("/")
-  }
+    dispatch(login("testUser@test.io", "password"));
+    history.push("/");
+  };
   const letsGetStarted = () => {
+    setError(false);
     if (!email) {
-      setError(true)
+      setTimeout(() => setError(true), 200);
     }
-    if (email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (re.test(email)) {
       history.push("/signup", { email });
+      
     }
-  }
+    else {
+      setTimeout(() => setError(true), 200);
+    }
+  };
 
   return (
     <>
@@ -58,10 +65,11 @@ const LandingPage = () => {
               membership.
             </h4>
             {error ? (
-              <span className={styles.error}>Please provide an email.</span>
+              <span className={styles.error}>Please provide a valid "demo" email.</span>
             ) : null}
             <div>
               <input
+                type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
               />
@@ -112,8 +120,12 @@ const LandingPage = () => {
               Ready to watch? Enter your email to create your membership.
             </span>
           </div>
+          {error ? (
+            <span className={styles.error}>Please provide a valid "demo" email.</span>
+          ) : null}
           <div className={styles.secondStarterRows}>
             <input
+              type="email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
             />
