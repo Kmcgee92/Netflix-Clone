@@ -19,19 +19,21 @@ const ProfileManager = () => {
   const profiles = useSelector((state) => state.profiles);
   const userId = useSelector((state) => state.auth.id);
   const [formState, setFormState] = useState(false);
-
+  const [editProfile, setEditProfile] = useState(false);
+  const [currentProfile, setCurrentProfile] = useState({});
 
   const handleAddProfile = () => {
-    setFormState(true)
-  }
-  const editProfile = (name, src, profileId) => {
-    console.log(name, src, profileId);
+    setFormState(true);
+  };
+  const handleEditProfile = (name, src, profileId) => {
+    setEditProfile(true);;
+    setCurrentProfile({  name,  src,  profileId  });;
+    setFormState(true);;
   };
 
   const closeManager = () => {
     history.push("/");
   };
-
 
   return (
     <>
@@ -42,41 +44,49 @@ const ProfileManager = () => {
         </a>
       </div>
       <div className={styles.body}>
-        {!formState ? 
-        <div className={styles.container}>
-          {profiles.length > 0 ? (
-            <h1>Manage Profiles:</h1>
-          ) : (
-            <h1>You dont have any profiles!</h1>
-          )}
-          <div className={styles.profiles}>
-            {profiles.map((profile, id) => (
-              <ProfileSelection
-                key={id}
-                profileId={profile.id}
-                name={profile.name}
-                src={profile.src}
-                editProfile={editProfile}
-              />
-            ))}
-            {profiles.length >= 6 ? (
-              <></>
+        {!formState ? (
+          <div className={styles.container}>
+            {profiles.length > 0 ? (
+              <h1>Manage Profiles:</h1>
             ) : (
-              <div>
-                <AddCircleOutlineIcon 
-                onClick={handleAddProfile}
-                fontSize={"large"} 
-                />
-              </div>
+              <h1>You dont have any profiles!</h1>
             )}
+            <div className={styles.profiles}>
+              {profiles.map((profile, id) => (
+                <ProfileSelection
+                  key={id}
+                  profileId={profile.id}
+                  name={profile.name}
+                  src={profile.src}
+                  handleEditProfile={handleEditProfile}
+                />
+              ))}
+              {profiles.length >= 6 ? (
+                <></>
+              ) : (
+                <div className={styles.addProfileBox}>
+                  <div>
+                    <AddCircleOutlineIcon
+                      style={{ width: "-20px", transform: "translateY(-40%)" }}
+                      onClick={handleAddProfile}
+                      fontSize={"large"}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className={styles.manage_profiles}>
+              <button onClick={closeManager}>Done</button>
+            </div>
           </div>
-          <div className={styles.manage_profiles}>
-            <button onClick={closeManager}>Done</button>
-          </div>
-        </div>
-          : null }
+        ) : null}
       </div>
-      {formState && <ProfileForm/>}
+      {formState && (
+        <ProfileForm
+          title={editProfile ? "Edit Profile" : "Create Profile"}
+          profile={currentProfile}
+        />
+      )}
     </>
   );
 };

@@ -4,22 +4,26 @@ import EditIcon from "@material-ui/icons/Edit";
 
 
 const ProfileSelection = (props) => {
-  const { editProfile, profileId, handleSetProfile, name, src } = props;
+  const { handleEditProfile, profileId, handleSetProfile, name, src } = props;
   return (
     <>
-      {!editProfile ? (
+      {!handleEditProfile ? (
         <div onClick={() => handleSetProfile(name, src, profileId)}>
           <img src={src} alt={src} />
           <div>{name}</div>
         </div>
       ) : (
-        <div onClick={() => editProfile(name, src, profileId)}>
+        <div onClick={() => handleEditProfile(name, src, profileId)}>
           <img src={src} alt={src} />
-          <EditIcon 
-          fontSize={"large"}
-          style={{position: "relative", right: "-40%", top: "-50%", color: "white"}}
+          <EditIcon
+            fontSize={"default"}
+            style={{
+              position: "absolute",
+              transform: "translateY(-80%)",
+              color: "white",
+            }}
           />
-          <div style={{marginTop: "-35px"}}>{name}</div>
+          <div>{name}</div>
         </div>
       )}
     </>
