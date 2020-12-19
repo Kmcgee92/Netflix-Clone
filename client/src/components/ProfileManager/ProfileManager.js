@@ -83,7 +83,8 @@ const ProfileManager = () => {
       </div>
       {formState && (
         <ProfileForm
-          title={editProfile ? "Edit Profile" : "Create Profile"}
+          formType={editProfile ? "Edit Profile" : "Add Profile"}
+          title={editProfile ? "Edit Profile" : "Add Profile"}
           profile={currentProfile}
         />
       )}

@@ -6,23 +6,25 @@ import {useSelector, useDispatch} from "react-redux"
 import styles from "../../scss/ProfileForm.module.scss";
 
 const ProfileForm = (props) => {
-  const { title, profile } = props;
+  const { formType, profile } = props;
   console.log(profile);
   const profiles = useSelector((state) => state.profiles);
   const userId = useSelector((state) => state.auth.id);
+
   const [name, setName] = useState(profile.name)
+  const [formTitle] = useState(formType)
 
   return (
     <div>
       <div className={styles.formContainer}>
         <div className={styles.formContent}>
-          <h1>{title}</h1>
-          <section>
+          <h1>{formTitle}</h1>
+          <section className={styles.flexContent}>
             <img src={profile.src} alt={profile.src}   />
-            <div>
-              <div>
+            <div className={styles.content}>
+
                 <input onChange={(e)=>setName(e.target.value)} value={name}></input>
-              </div>
+
               <div>
                 <h3>Language:</h3>
               </div>
