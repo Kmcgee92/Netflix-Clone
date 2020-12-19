@@ -20,13 +20,19 @@ const ProfileForm = (props) => {
         <div className={styles.formContent}>
           <h1>{formTitle}</h1>
           <section className={styles.flexContent}>
-            <img src={profile.src} alt={profile.src}   />
+            <section>
+              <img src={profile.src} alt={profile.src}   />
+
+            </section>
             <div className={styles.content}>
 
                 <input onChange={(e)=>setName(e.target.value)} value={name}></input>
 
               <div>
                 <h3>Language:</h3>
+                <select>
+                  <option>English</option>
+                </select>
               </div>
               <div>
                 <h3>Maturity Settings:</h3>
