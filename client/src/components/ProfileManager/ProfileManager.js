@@ -43,8 +43,8 @@ const ProfileManager = () => {
           <div className={styles.logo}></div>
         </a>
       </div>
-      <div className={styles.body}>
         {!formState ? (
+      <div className={styles.body}>
           <div className={styles.container}>
             {profiles.length > 0 ? (
               <h1>Manage Profiles:</h1>
@@ -79,8 +79,8 @@ const ProfileManager = () => {
               <button onClick={closeManager}>Done</button>
             </div>
           </div>
-        ) : null}
       </div>
+        ) : null}
       {formState && (
         <ProfileForm
           formType={editProfile ? "Edit Profile" : "Add Profile"}
