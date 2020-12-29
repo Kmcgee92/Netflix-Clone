@@ -11,7 +11,6 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 
 const BrowseBanner = (props) => {
-  const history = useHistory()
   const { title, backdrop, rating, overview } = props;
   const [video, setVideo] = useState(true);
   const [mute, setMute] = useState(true);
@@ -26,7 +25,7 @@ const BrowseBanner = (props) => {
       loop: 1,
       playlist: "JTHWAQG6Gxw",
       rel: 0,
-      controls: 2,
+      controls: 0,
       showinfo: 0,
     },
   };
@@ -36,6 +35,10 @@ const BrowseBanner = (props) => {
       setVideo(false);
     } else setVideo(true);
   };
+
+  // const handleVolume = () => {
+  //   return;
+  // };
   return (
     <>
       <div className={styles.header}>
@@ -63,22 +66,22 @@ const BrowseBanner = (props) => {
                       </div>
                     </a>
                   </div>
-                    <div className={styles.volume}>
-                      {mute ? (
-                        <VolumeOffIcon onClick={() => setMute(!mute)} />
-                      ) : (
-                        <VolumeUpIcon onClick={() => setMute(!mute)} />
-                      )}
-                    </div>
-                    <div className={styles.rating}>{rating}</div>
+                  <div className={styles.volume}>
+                    {mute ? (
+                      <VolumeOffIcon onClick={() => setMute(!mute)} />
+                    ) : (
+                      <VolumeUpIcon onClick={() => setMute(!mute)} />
+                    )}
                   </div>
+                  <div className={styles.rating}>{rating}</div>
+                </div>
               </section>
             </>
           ) : (
             <>
-                <div>
-                  <img src={`https://image.tmdb.org/t/p/original/${backdrop}`} />
-                </div>
+              <div>
+                <img src={`https://image.tmdb.org/t/p/original/${backdrop}`} />
+              </div>
 
               <section>
                 <h1>{title}</h1>
@@ -96,7 +99,7 @@ const BrowseBanner = (props) => {
                       </div>
                     </a>
                   </div>
-                <div className={styles.rating}>{rating}</div>
+                  <div className={styles.rating}>{rating}</div>
                 </div>
               </section>
             </>

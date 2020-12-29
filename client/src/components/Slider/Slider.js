@@ -102,6 +102,16 @@ const Slider = (props) => {
         </button>
       </div>
       {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+      {/* {trailerUrl && (
+        <iframe
+          id="ytplayer"
+          type="text/html"
+          width="100%"
+          height="400"
+          src={`https://www.youtube.com/embed/${trailerUrl}?autoplay=1?enablejsapi=1&origin=http://example.com`}
+          frameBorder="0"
+        ></iframe>
+      )} */}
     </>
   );
 };

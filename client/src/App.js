@@ -51,7 +51,7 @@ function App() {
 
   // if (loading) return null;
   return (
-    <BrowserRouter history={history}>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <GetStarted />

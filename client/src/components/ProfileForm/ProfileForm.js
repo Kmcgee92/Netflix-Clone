@@ -12,17 +12,16 @@ const ProfileForm = (props) => {
   const profiles = useSelector((state) => state.profiles);
   const userId = useSelector((state) => state.auth.id);
 
-  const [name, setName] = useState(profile.name)
-  const [avatar, setAvatar] = useState(profile.src)
-  const [formTitle] = useState(formType)
-
+  const [name, setName] = useState(profile.name);
+  const [avatar, setAvatar] = useState(profile.src);
+  const [formTitle] = useState(formType);
 
   const handleProfileUpdate = () => {
-    console.log(name, avatar)
-  }
+    console.log(name, avatar);
+  };
   const handleDeleteWarning = () => {
-    console.log("are you sure?")
-  }
+    console.log("are you sure?");
+  };
   return (
     <div>
       <div className={styles.formContainer}>
@@ -82,22 +81,13 @@ const ProfileForm = (props) => {
             </div>
           </section>
           <div className={styles.buttonContainer}>
-            <button 
-            id={styles.save}
-            onClick={handleProfileUpdate}
-            >
+            <button id={styles.save} onClick={handleProfileUpdate}>
               Save
             </button>
-            <button 
-            id={styles.cancel} 
-            onClick={()=>history.push("/")}
-            >
+            <button id={styles.cancel} onClick={() => history.push("/")}>
               Cancel
             </button>
-            <button 
-            id={styles.delete}
-            onClick={handleDeleteWarning}
-            >
+            <button id={styles.delete} onClick={handleDeleteWarning}>
               Delete Profile
             </button>
           </div>

@@ -166,12 +166,3 @@ const Browse = () => {
 export default Browse;
 
 
-// nexflix-originals
-// trending
-
-// action-movies
-// comedy-movies
-// horror-movies
-// romance-movies
-// fantasy
-
