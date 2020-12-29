@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from "history"
+// Google Analytics
+import ReactGA from "react-ga";  //Google Analytics
+
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { generateSession } from "./Redux/actions/authActions";
@@ -19,6 +23,15 @@ import ProfileManager from "./components/ProfileManager/ProfileManager";
 
 
 function App() {
+
+    const history = createBrowserHistory();
+
+    // Initialize google analytics page view tracking
+    history.listen((location) => {
+      ReactGA.initialize("UA-186196592-1");
+      ReactGA.set({ page: location.pathname }); // Update the user's current page
+      ReactGA.pageview(location.pathname); // Record a pageview for the given page
+    });
   // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
   // const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -38,7 +51,7 @@ function App() {
 
   // if (loading) return null;
   return (
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Switch>
         <Route exact path="/">
           <GetStarted />
