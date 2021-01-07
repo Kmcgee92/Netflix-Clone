@@ -30,6 +30,7 @@
 }
 
 .body {
+  height: calc(100vh - 68px);
   color: white;
   display: flex;
   text-align: center;
