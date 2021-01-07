@@ -29,7 +29,7 @@ const ProfileForm = (props) => {
           <h1>{formTitle}</h1>
           <section className={styles.flexContent}>
             <section>
-              <img src={profile.src} alt={profile.src} />
+              <img src={avatar} alt={avatar} />
             </section>
             <div className={styles.content}>
               <input
