@@ -105,6 +105,8 @@ def signup():
     set_refresh_cookies(resp, refresh_token)
     return resp, 200
 
+# NESTED PROFILE ROUTES MOUNTED ON USER ROUTES
+
 
 @user.route('/profiles/<id>')
 def profiles(id):
@@ -127,9 +129,16 @@ def profiles_update(id, profileId):
     userData = queriedUser.to_dict()
     return jsonify({"profile": userData["profile"]})
 
+
+
+@user.route('/profiles/delete/<profileId>', methods=['DELETE'])
+def delete_profile(profileId):
+    print(profileId)
+    return "hello"
+    pass
+
+
 # persistant sessions
-
-
 @ user.route('/token/refresh', methods=['POST'])
 @jwt_optional
 def refresh():

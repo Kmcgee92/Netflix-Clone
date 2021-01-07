@@ -41,7 +41,10 @@ const Slider = (props) => {
       const res = await fetch(`/api/TMDB/${url}`);
       if (res.ok) {
         const data = await res.json();
-        setFetched(([]) => [...data.results]);
+        const validCollection = data.results.filter((result) => {
+          return result.backdrop_path;
+        });
+        setFetched(([]) => [...validCollection]);
       }
     };
     retriever();

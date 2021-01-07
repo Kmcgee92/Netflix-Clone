@@ -40,10 +40,12 @@
           padding: 8px;
           font-size: 20px;
           margin-bottom: 40px;
-          
         }
         .profileInput:focus {
           outline: none;
+        }
+        .profileInput::placeholder {
+          color: rgb(220,220,220);
         }
         div {
           margin-bottom: 40px;

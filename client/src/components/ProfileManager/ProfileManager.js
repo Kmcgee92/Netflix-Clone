@@ -26,9 +26,9 @@ const ProfileManager = () => {
     setFormState(true);
   };
   const handleEditProfile = (name, src, profileId) => {
-    setEditProfile(true);;
-    setCurrentProfile({  name,  src,  profileId  });;
-    setFormState(true);;
+    setEditProfile(true);
+    setCurrentProfile({ name, src, profileId });
+    setFormState(true);
   };
 
   const closeManager = () => {

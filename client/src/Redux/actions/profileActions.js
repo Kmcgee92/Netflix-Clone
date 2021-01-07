@@ -1,7 +1,7 @@
 export const GET_PROFILES = "GET_PROFILES";
 
 //!ACTIONS
-export const addProfiles = (profiles) => {
+export const loadProfiles = (profiles) => {
   return {
     type: GET_PROFILES,
     profiles,
@@ -15,9 +15,22 @@ export const getProfiles = (userId) => async (dispatch) => {
 
   if (res.ok) {
     const { profiles } = await res.json();
-    dispatch(addProfiles(profiles));
+    dispatch(loadProfiles(profiles));
   }
   return res;
 };
 
+export const deleteProfile = (userId, profileId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/users/profiles/delete/${profileId}`, {
+      method: "DELETE"
+    })
+    if(res.ok) {
+      dispatch(getProfiles(userId))
+    }
+    return res
 
+  } catch (e) {
+    console.log(e)
+  }
+}
